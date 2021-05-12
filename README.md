@@ -213,3 +213,17 @@ Want to use **The Coolest Feature X** but Label Studio doesn't support it? Check
 This software is licensed under the [Apache 2.0 LICENSE](/LICENSE) © [Heartex](https://www.heartex.ai/). 2020-2021
 
 <img src="https://github.com/heartexlabs/label-studio/blob/master/images/opossum_looking.png?raw=true" title="Hey everyone!" height="140" width="140" />
+
+
+## This fork just contains a try to get https working in docker-compose (removed postgres BTW).
+
+To get it running first provide some certificate and a key under .ssl.
+You can generate it e.g. with a command:
+`mkdir ssl && openssl req -x509 -nodes -days 365 -subj /C=XX/ST=XX/L=XX/O=generated/CN=generated -newkey rsa:2048 -keyout ./ssl/mykey.key -out ./ssl/mycert.pem`
+
+and the build docker image and run docker compose:
+
+```bash
+docker build -t heartexlabs/label-studio:latest .
+docker-compose up
+```
